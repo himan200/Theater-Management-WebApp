@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+<link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/styles.css" rel="stylesheet">
+<style>
+body {
+    background-image: linear-gradient(to left bottom, #983eb6, #8430b5, #6c24b5, #4c1ab6, #0d14b6);
+    font-family: 'Poppins-Regular', sans-serif;
+}
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.2);
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    border: 0;
+    outline: none;
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin: 20px 0;
+    border-bottom: 2px solid #adadad;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-form input[type="text"]:hover,
+.login-form input[type="password"]:hover {
+    border-bottom-color: #03a9f4;
+    transform: translateY(-3px);
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-bottom-color: #03a9f4;
+}
+
+.login-form input[type="submit"] {
+    background: #03a9f4;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-form input[type="submit"]:hover {
+    background: #0169D9;
+    transform: scale(1.05);
+}
+
+/* Adding a pulsing effect to the submit button */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(1, 105, 217, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(1, 105, 217, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(1, 105, 217, 0);
+    }
+}
+
+.login-form input[type="submit"]:focus:not(:active) {
+    animation: pulse 1s infinite;
+}
+
+
+</style>
+</head>
+<body>
+<div class="login-page">
+    <div class="login-box">
+        <h2>Admin Login</h2>
+        <form class="login-form" action="/login" method="post">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</div>
+</body>
+</html>

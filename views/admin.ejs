@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
+    <style>
+   /* Import Google Fonts for unique typography */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Reset default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+  background: #1A1A2E; /* Dark background for modern look */
+  color: #E6E6E6; /* Light text for contrast */
+  height: 100%;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+/* Header Styles */
+.header {
+  background-color: #16213E; /* Darker shade for header */
+  color: #E6E6E6;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #0F3460; /* Even darker shade for footer */
+  color: #E6E6E6;
+  text-align: center;
+  padding: 1rem 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 1000;
+}
+
+/* Main Content Styles */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  min-height: calc(100% - 80px); /* Adjust based on header/footer height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Advanced Grid Layout for Main Content */
+.main-content {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* Form Styling */
+form {
+  background-color: #E6E6E6; /* Light background for form */
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Input and Button Styling */
+input, select, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #0F3460; /* Border color to match footer */
+  border-radius: 3px;
+  background: #E6E6E6;
+  color: #16213E;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #E94560; /* Accent color for buttons */
+  color: #E6E6E6;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #D92A45; /* Darker shade for button hover state */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+/* Ensure labels are visible */
+.form-label {
+  display: block;
+  color: #16213E;
+  margin-bottom: .5rem;
+}
+
+/* Override Bootstrap styles if necessary */
+.navbar-dark .navbar-brand, .footer {
+  color: #E6E6E6 !important;
+}
+
+/* Update color theme */
+body, html {
+  background: #121212; /* Updated dark background */
+}
+
+.header, .footer {
+  background-color: #1F1F1F; /* Updated dark shade for header and footer */
+}
+
+/* Update input and button styles */
+input, select, textarea, button {
+  background: #FFFFFF; /* Light background for inputs and buttons */
+  color: #121212; /* Dark text for contrast */
+}
+
+button {
+  background-color: #FFC107; /* Updated accent color for buttons */
+}
+
+button:hover {
+  background-color: #FFB300; /* Darker shade for button hover state */
+}
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<nav class="navbar navbar-dark bg-dark header">
+    <div class="container">
+        <h1 class="navbar-brand"><%= title %></h1>
+    </div>
+</nav>
+<!-- End Header -->
+
+<!-- Main Content -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Movie Addition Form -->
+        <div class="col-md-8">
+            <div class="card movie-form"> <!-- Apply movie-form class -->
+                <div class="card-body">
+                    <h5 class="card-title">Add New Movie</h5>
+                    <form action="/add_movie" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="title" class="form-label">Title:</label>
+                            <input type="text" id="title" name="title" class="form-control" required>
+                        </div><br>
+                        <div class="form-group">
+                            <label for="show_timings" class="form-label">Show Timings:</label>
+                            <select id="show_timings" name="show_timings[]" class="form-control" multiple required>
+                                <option value="9:00 AM">09:00 AM</option>
+<option value="10:00 AM">10:00 AM</option>
+<option value="11:00 AM">11:00 AM</option>
+<option value="12:00 PM">12:00 PM</option>
+<option value="01:00 PM">01:00 PM</option>
+<option value="02:00 PM">02:00 PM</option>
+<option value="03:00 PM">03:00 PM</option>
+<option value="04:00 PM">04:00 PM</option>
+<option value="05:00 PM">05:00 PM</option>
+<option value="06:00 PM">06:00 PM</option>
+<option value="07:00 PM">07:00 PM</option>
+<option value="08:00 PM">08:00 PM</option>
+<option value="09:00 PM">09:00 PM</option>
+<option value="10:00 PM">10:00 PM</option>
+<option value="11:00 PM">11:00 PM</option>
+                                <!-- Add more options here -->
+                            </select>
+                        </div><br>
+                        <div class="form-group">
+                            <label for="cast" class="form-label">Cast (comma-separated):</label>
+                            <input type="text" id="cast" name="cast" class="form-control" required>
+                        </div><br>
+                        <div class="form-group">
+                            <label for="description" class="form-label">Description:</label>
+                            <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+                        </div><br>
+                        <div class="form-group">
+                            <label for="poster" class="form-label">Poster:</label>
+                            <input type="file" id="poster" name="poster" class="form-control-file" required accept="image/*">
+                        </div><br>
+                        <button type="submit" class="btn btn-primary btn-block">Add Movie</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Main Content -->
+
+<!-- Footer -->
+<footer class="footer mt-5">
+    <div class="container">
+        <p>&copy; 2024 Cinemax. All rights reserved.</p>
+    </div>
+</footer>
+<!-- End Footer -->
+
+</body>
+</html>

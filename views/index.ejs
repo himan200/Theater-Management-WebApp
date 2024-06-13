@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/styles.css" rel="stylesheet">
+    <style>
+
+
+
+        /* Custom styles for this page */
+        /* Basic CSS template for the Cinemax movie schedule webpage */
+
+        /* Set a light background color for better readability */
+        /* Updated CSS template for the Cinemax movie schedule webpage with bright colors */
+
+/* Set a vibrant background color for the body */
+/* Dynamic CSS template for the Cinemax movie schedule webpage */
+
+/* Set a bold and vibrant background color for the body */
+/* CSS for the Cinemax movie schedule webpage with a gradient background */
+
+/* Set a gradient background from soft peach to vibrant coral */
+body {
+  background: linear-gradient(to right, #ffd5c2, #ff6b6b); /* Gradient background */
+  color: #333; /* Dark text for readability */
+  font-family: 'Open Sans', sans-serif; /* Clean and modern font */
+}
+
+.navbar-brand {
+  font-family: 'Arial', sans-serif; /* Choose a font that suits your brand */
+  font-size: 36px; /* Adjust the size as needed */
+  color: #d35400; /* Choose a color that matches your brand */
+  text-transform: uppercase; /* Uppercase letters for a more impactful logo */
+  letter-spacing: 2px; /* Increase letter spacing for better readability */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional shadow for depth */
+}
+
+/* Style the movie schedule section */
+.movie-schedule {
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(2, 194, 92, 0.236); /* Slightly transparent white for the section */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(14, 13, 13, 0.1); /* Soft shadow for depth */
+}
+
+/* Style the movie posters */
+.movie-poster {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px; /* Space between posters */
+  border: 3px solid #fff; /* White border to make posters pop */
+}
+
+.card-title {
+  font-size: 24px; /* Set the font size for the title */
+  font-weight: bold; /* Make the title text bold */
+  color: #333; /* Set the text color to a dark shade for readability */
+  margin-bottom: 15px; /* Add some space below the title */
+  text-align: center; /* Center-align the title text */
+  text-transform: uppercase; /* Transform the text to uppercase for a more impactful look */
+  letter-spacing: 1.5px; /* Increase letter spacing for a touch of elegance */
+}
+
+
+/* Style the movie information */
+
+
+.movie-info .card-desc {
+  font-size: 18px; /* Larger font size for the description */
+  color: #444; /* Dark grey color for prominence */
+  margin-bottom: 10px; /* Space between the description and the cast */
+}
+
+.movie-info .card-cast {
+  font-size: 16px; /* Slightly smaller font size for the cast names */
+  font-style: italic; /* Italicize the cast names */
+  color: #666; /* Lighter color for the cast names */
+}
+.movie-info .card-desc .description-label {
+  font-weight: bold; /* Bold font for the label */
+  color: #ff4500; /* Orange-red color to make it pop */
+}
+
+.movie-info .card-cast .cast-label {
+  font-weight: bold; /* Bold font for the label */
+  color: #008000; /* Green color to distinguish it */
+}
+
+/* Style the admin panel button */
+.admin-panel-btn {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ff8c00; /* Bright orange for the button */
+  color: #fff; /* White text for contrast */
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px; /* Rounded corners for the button */
+  transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+}
+
+.admin-panel-btn:hover {
+  background-color: #e67600; /* Darker orange on hover */
+}
+
+/* Add custom styles for each movie poster based on their original colors */
+#the-matrix-poster {
+  /* Styles specific to The Matrix poster */
+}
+
+#inception-poster {
+  /* Styles specific to Inception poster */
+}
+
+#forrest-gump-poster {
+  /* Styles specific to Forrest Gump poster */
+}
+
+#pulp-fiction-poster {
+  /* Styles specific to Pulp Fiction poster */
+}
+
+/* Add any additional styles as needed */
+
+
+/* Add any additional styles as needed */
+
+
+/* Add any additional styles as needed */
+
+
+        /* Add any additional styles as needed */
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-dark header">
+        <div class="container">
+            <h1 class="navbar-brand">
+                <%= title %>
+            </h1>
+            <a href="/login" class="btn btn-light admin-panel-btn">Admin Panel</a>
+        </div>
+    </nav>
+    <!-- End Header -->
+
+    <div class="container">
+        <h2>Movie Schedule</h2>
+
+        <div class="row">
+            <!-- Display all movies -->
+            <% moviesData.current_movies.forEach(movie=> { %>
+                <div class="col-md-4">
+                    <div class="card movie-card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= movie.title %>
+                            </h5>
+                            <img style="width: 100%;" src="/uploads/<%= movie.poster %>" alt="<%= movie.poster %>"
+                                class="movie-poster">
+                            <div class="movie-info">
+
+                                <p class="card-desc"><span class="description-label ">Description:</span> <%= movie.description %>
+                                </p>
+                                <p class="card-cast"><span class="cast-label">Cast :</span> <%= movie.cast %>
+                                </p>
+                            </div>
+                            <div class="movie-schedule">
+                                <p class="card-text">Show Timings: <%= movie.show_timings %>
+                                </p>
+                            </div>
+                            <!-- Add other movie details here -->
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Cinemax. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+</body>
+
+</html>
